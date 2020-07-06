@@ -1,17 +1,17 @@
 {% set name = "modin" %}
-{% set version = "0.7.3" %}
+{% set version = "0.7.4" %}
 
 package:
   name: modin
-  version: "{{ version }}"
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cb11d4f62453d47f0d014e2fd9b90fd001c6738ae377e929ae1996d860767c30 
+  sha256: 3a908809b60318f91ab45894a415716d5d8324428b67fcd9fefcbebcfe5e6aca
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   noarch: python
 
 requirements:
