@@ -1,5 +1,5 @@
 {% set name = "modin" %}
-{% set version = "0.8.0" %}
+{% set version = "0.8.1" %}
 
 package:
   name: modin
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 82418185c3340f54ab971113b86f10470ede20c9d81e256fd10b4828ae303a60
+  sha256: 4caddd8860f8b4d5dcf4bc7981ef7f995a88d3d64125a79929a7814dd0a5c8d7
 
 build:
   number: 0
@@ -20,7 +20,7 @@ requirements:
     - python >=3.6
   run:
     - python >=3.6
-    - pandas ==1.0.5
+    - pandas ==1.1.2
     - dask >=2.1.0
     - distributed >=2.3.2
 
