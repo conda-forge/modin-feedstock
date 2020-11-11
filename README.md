@@ -5,11 +5,13 @@ Home: https://github.com/modin-project/modin
 
 Package license: Apache-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/modin-feedstock/blob/master/LICENSE.txt)
 
 Summary: Speed up your Pandas workflows by changing a single line of code
 
+Development: https://github.com/modin-project/modin
 
+Documentation: https://modin.readthedocs.io/
 
 Current build status
 ====================
