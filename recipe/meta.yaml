@@ -10,19 +10,23 @@ source:
   sha256: 0e224911e21e6a7134baa2a3162c91af2594bf75b9c2d7e39a3f0d10e38793a5
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
-  noarch: python
+  # noarch disabled because the recipe now has selector for Ray, see below
+  # noarch: python
+  skip: True  # [py<36]
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python
   run:
-    - python >=3.6
+    - python
     - pandas ==1.1.4
     - dask >=2.1.0
     - distributed >=2.3.2
+    # there is no Ray in conda-forge for MacOS yet, see https://github.com/conda-forge/ray-packages-feedstock/issues/2
+    - ray-core >=1.0  # [win or linux]
 
 test:
   commands:
