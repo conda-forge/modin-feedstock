@@ -10,7 +10,7 @@ source:
   sha256: 1be4b6c9b19d8e65889e5093c9479a3e519d29b8a8f9c48c44c40f81ea9bbfa2
 
 build:
-  number: 0
+  number: 1
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
