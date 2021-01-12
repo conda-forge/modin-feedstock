@@ -1,5 +1,5 @@
 {% set name = "modin" %}
-{% set version = "0.8.2" %}
+{% set version = "0.8.3" %}
 
 package:
   name: modin
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0e224911e21e6a7134baa2a3162c91af2594bf75b9c2d7e39a3f0d10e38793a5
+  sha256: 1be4b6c9b19d8e65889e5093c9479a3e519d29b8a8f9c48c44c40f81ea9bbfa2
 
 build:
-  number: 1
+  number: 0
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: True  # [py<36]
+  skip: true  # [py<36]
 
 requirements:
   host:
