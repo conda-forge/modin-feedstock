@@ -10,7 +10,7 @@ source:
   sha256: 88ce4def4a1145d31d207be55b9c3ba914e084ccfebace1d52b03507df258fd2
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
