@@ -91,7 +91,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - ray-core >=1.0
-        - pyarrow ==1.0
+        - pyarrow ==1.0  # [py<39]
     test:
       imports:
         # are there more specific imports?!
