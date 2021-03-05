@@ -14,7 +14,7 @@ build:
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<36]
+  skip: true  # [py<37]
 
 requirements:
   host:
