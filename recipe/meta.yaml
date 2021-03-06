@@ -2,7 +2,7 @@
 {% set version = "0.10.0" %}
 
 package:
-  name: modin
+  name: modin-packages
   version: {{ version }}
 
 source:
@@ -11,27 +11,125 @@ source:
 
 build:
   number: 0
-  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
 
-requirements:
-  host:
-    - pip
-    - python
-  run:
-    - python
-    - pandas ==1.2.3
-    - dask >=2.12
-    - distributed >=2.12
-    # there is no Ray in conda-forge for MacOS yet, see https://github.com/conda-forge/ray-packages-feedstock/issues/2
-    - ray-core >=1.0  # [win or linux]
+# the outputs map the modin options on PyPI (see upstream definition
+# https://github.com/modin-project/modin/blob/0.9.0/setup.py#L60-L67)
+# from "modin[<option>]" to "modin-<option>" as a conda-forge package
+outputs:
+  - name: modin-all
+    requirements:
+      host:
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - {{ pin_subpackage('modin-dask', exact=True) }}
+        # ray does not have OSX builds yet
+        - {{ pin_subpackage('modin-ray', exact=True) }}  # [not osx]
+        #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
+        #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
+    test:
+      imports:
+        # dummy test; actual tests are in subpackages
+        - modin
 
-test:
-  imports:
-    - modin
-    - modin.pandas
+  # compatibility with packagename before split into options
+  - name: modin
+    requirements:
+      host:
+      run:
+        - python
+        - {{ pin_subpackage('modin-all', exact=True) }}
+    test:
+      imports:
+        # dummy test; actual tests are in subpackages
+        - modin
+
+  - name: modin-core
+    build:
+      script: 'python -m pip install . --no-deps --ignore-installed -vv'
+    requirements:
+      host:
+        - pip
+        - python
+      run:
+        - python
+        - packaging
+        - pandas ==1.2.3
+    test:
+      imports:
+        - modin
+        - modin.pandas
+
+  - name: modin-dask
+    build:
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - dask >=2.12.0
+        - distributed >=2.12.0
+    test:
+      imports:
+        # are there more specific imports?!
+        - modin
+
+  - name: modin-ray
+    build:
+      # there is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2
+      skip: true  # [osx]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - ray-core >=1.0
+        - pyarrow ==1.0
+    test:
+      imports:
+        # are there more specific imports?!
+        - modin
+
+  - name: modin-remote
+    build:
+      # dependency rpyc is not in conda-forge yet
+      skip: true
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - boto3 ==1.4.8
+        - cloudpickle ==1.4.1
+        - rpyc ==4.1.5
+    test:
+      imports:
+        # are there more specific imports?!
+        - modin
+
+  # TODO: resolve conflict modin[spreadsheet] vs. modin-spreadsheet
+  - name: modin-spreadsheet
+    build:
+      # dependency modin-spreadsheet is not in conda-forge yet
+      skip: true
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - modin-spreadsheet >=0.1.0
+    test:
+      imports:
+        # are there more specific imports?!
+        - modin
+
 about:
   home: https://github.com/modin-project/modin
   license: Apache-2.0
@@ -45,3 +143,4 @@ extra:
   recipe-maintainers:
     - devin-petersohn
     - h-vetinari
+  feedstock-name: modin
