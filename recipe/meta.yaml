@@ -41,11 +41,12 @@ outputs:
       host:
       run:
         - python
-        - {{ pin_subpackage('modin-all', exact=True) }}
+        # modin needs at least one engine; use dask as it is more light-weight than ray
+        - {{ pin_subpackage('modin-dask', exact=True) }}
     test:
       imports:
-        # dummy test; actual tests are in subpackages
         - modin
+        - modin.pandas
 
   - name: modin-core
     build:
@@ -59,9 +60,10 @@ outputs:
         - packaging
         - pandas ==1.2.3
     test:
-      imports:
-        - modin
-        - modin.pandas
+      commands:
+        # cannot import modin because it needs an engine (dask or ray)
+        # TODO: add core-specific tests!
+        - exit 0
 
   - name: modin-dask
     build:
