@@ -29,9 +29,9 @@ requirements:
     - ray-core >=1.0  # [win or linux]
 
 test:
-  commands:
-    - python run_test.py
-
+  imports:
+    - modin
+    - modin.pandas
 about:
   home: https://github.com/modin-project/modin
   license: Apache-2.0
