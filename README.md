@@ -31,6 +31,13 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
+              <td>linux_64_python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_64_python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
@@ -52,6 +59,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>osx_64_python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=master&jobName=osx&configuration=osx_64_python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_python3.7.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
@@ -70,6 +84,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=master&jobName=osx&configuration=osx_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=master&jobName=win&configuration=win_64_python3.6.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -107,6 +128,12 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin-green.svg)](https://anaconda.org/conda-forge/modin) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin.svg)](https://anaconda.org/conda-forge/modin) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin.svg)](https://anaconda.org/conda-forge/modin) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin.svg)](https://anaconda.org/conda-forge/modin) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--all-green.svg)](https://anaconda.org/conda-forge/modin-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-all.svg)](https://anaconda.org/conda-forge/modin-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-all.svg)](https://anaconda.org/conda-forge/modin-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-all.svg)](https://anaconda.org/conda-forge/modin-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--core-green.svg)](https://anaconda.org/conda-forge/modin-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-core.svg)](https://anaconda.org/conda-forge/modin-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-core.svg)](https://anaconda.org/conda-forge/modin-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-core.svg)](https://anaconda.org/conda-forge/modin-core) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--dask-green.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--ray-green.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--remote-green.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--spreadsheet-green.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) |
 
 Installing modin
 ================
@@ -117,10 +144,10 @@ Installing `modin` from the `conda-forge` channel can be achieved by adding `con
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `modin` can be installed with:
+Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-ray, modin-remote, modin-spreadsheet` can be installed with:
 
 ```
-conda install modin
+conda install modin modin-all modin-core modin-dask modin-ray modin-remote modin-spreadsheet
 ```
 
 It is possible to list all of the versions of `modin` available on your platform with:
