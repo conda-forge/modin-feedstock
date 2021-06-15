@@ -1,5 +1,5 @@
 {% set name = "modin" %}
-{% set version = "0.9.1" %}
+{% set version = "0.10.0" %}
 
 package:
   name: modin
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6a31ab403ca47eb1d0d1c42a7a7faa181ee85154afe1d264a07c06da2de633ff
+  sha256: 88ce4def4a1145d31d207be55b9c3ba914e084ccfebace1d52b03507df258fd2
 
 build:
   number: 0
