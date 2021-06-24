@@ -22,9 +22,9 @@ requirements:
     - python
   run:
     - python
-    - pandas ==1.2.3
-    - dask >=2.12, <=2.19.0
-    - distributed >=2.12, <=2.19.0
+    - pandas ==1.2.4
+    - dask >=2.12,<=2.19.0
+    - distributed >=2.12,<=2.19.0
     # there is no Ray in conda-forge for MacOS yet, see https://github.com/conda-forge/ray-packages-feedstock/issues/2
     - ray-core ==1.4.0  # [win or linux]
 
