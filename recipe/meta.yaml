@@ -12,7 +12,7 @@ source:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
     # in upstream so this doesn't go unnoticed.
-    - patches/0001-Remove-all-dependencies-from-setup.py-should-be-hand.patch
+    - patches/0001-Remove-all-dependencies-from-setup.py.patch
 
 build:
   number: 0
