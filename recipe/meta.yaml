@@ -35,6 +35,7 @@ outputs:
         - {{ pin_subpackage('modin-omnisci', exact=True) }}       # [linux]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
+        #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
     test:
       imports:
         # dummy test; actual tests are in subpackages
@@ -122,7 +123,23 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); cfg.Backend.put('OmniSci'); df = pd.DataFrame([])"
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); cfg.Backend.put('OmniSci'); df = pd.DataFrame([])"
+
+  - name: modin-sql
+    build:
+      # Dependency dfsql is not in conda-forge yet.
+      skip: true
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - dfsql >=0.2.6
+    test:
+      imports:
+        # are there more specific imports?!
+        - modin
 
   - name: modin-remote
     build:
