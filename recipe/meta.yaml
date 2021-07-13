@@ -1,5 +1,5 @@
 {% set name = "modin" %}
-{% set version = "0.10.0" %}
+{% set version = "0.10.1" %}
 
 package:
   name: modin-packages
@@ -8,15 +8,20 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 88ce4def4a1145d31d207be55b9c3ba914e084ccfebace1d52b03507df258fd2
+  patches:
+    # Remove all requirements from setup.py - they should be handled here.
+    # The point is to create a "patch failed" conflict when dependencies change
+    # in upstream so this doesn't go unnoticed.
+    - patches/0001-Remove-all-dependencies-from-setup.py-should-be-hand.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
 
 # the outputs map the modin options on PyPI (see upstream definition
-# https://github.com/modin-project/modin/blob/0.9.0/setup.py#L60-L67)
+# https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
 # from "modin[<option>]" to "modin-<option>" as a conda-forge package
 outputs:
   - name: modin-all
@@ -27,7 +32,8 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
         # ray does not have OSX builds yet
-        - {{ pin_subpackage('modin-ray', exact=True) }}  # [not osx]
+        - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
+        - {{ pin_subpackage('modin-omnisci', exact=True) }}       # [linux]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
     test:
@@ -58,12 +64,12 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.2.3
+        - pandas ==1.3.0
+        - numpy >=1.16.5
     test:
-      commands:
-        # cannot import modin because it needs an engine (dask or ray)
-        # TODO: add core-specific tests!
-        - exit 0
+      imports:
+        - modin
+        - modin.pandas
 
   - name: modin-dask
     build:
@@ -73,12 +79,14 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - dask >=2.12.0
-        - distributed >=2.12.0
+        - dask >=2.22.0
+        - distributed >=2.22.0
     test:
       imports:
-        # are there more specific imports?!
         - modin
+        - modin.pandas
+      commands:
+        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Dask'); df = pd.DataFrame([])"
 
   - name: modin-ray
     build:
@@ -90,16 +98,37 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - ray-core >=1.0
-        - pyarrow ==1.0  # [py<39]
+        - ray-core >=1.4.0
+        - pyarrow >=1.0  # [py<39]
     test:
       imports:
-        # are there more specific imports?!
         - modin
+        - modin.pandas
+      commands:
+        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); df = pd.DataFrame([])"
+
+  - name: modin-omnisci
+    build:
+      # there is no OmniSci on anything but Linux for now
+      skip: true  # [not linux]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-ray', exact=True) }}
+        - pyomniscidbe
+      imports:
+        - modin
+        - modin.pandas
+      commands:
+        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); cfg.Backend.put('OmniSci'); df = pd.DataFrame([])"
 
   - name: modin-remote
     build:
-      # dependency rpyc is not in conda-forge yet
+      # Dependency rpyc is not in conda-forge yet.
+      # Also requires ray-autoscaler which is now absent because
+      # its dependencies on conda-forge are too ancient.
       skip: true
     requirements:
       host:
@@ -108,7 +137,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - boto3 ==1.4.8
-        - cloudpickle ==1.4.1
+        - cloudpickle
         - rpyc ==4.1.5
     test:
       imports:
@@ -118,6 +147,7 @@ outputs:
   # TODO: resolve conflict modin[spreadsheet] vs. modin-spreadsheet
   - name: modin-spreadsheet
     build:
+      # TODO: maybe build modin-spreadsheet here from pypi?
       # dependency modin-spreadsheet is not in conda-forge yet
       skip: true
     requirements:
