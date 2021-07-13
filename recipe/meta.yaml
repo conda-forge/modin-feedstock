@@ -118,6 +118,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-ray', exact=True) }}
         - pyomniscidbe
+    test:
       imports:
         - modin
         - modin.pandas
