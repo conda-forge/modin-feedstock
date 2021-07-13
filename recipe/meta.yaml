@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 88ce4def4a1145d31d207be55b9c3ba914e084ccfebace1d52b03507df258fd2
+  sha256: 21bc61380f1b7e81fbc3c2ff9a829787f56e19b378a7248b3dc360d99cfae9e8
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
