@@ -162,11 +162,13 @@ outputs:
         # are there more specific imports?!
         - modin
 
-  # TODO: resolve conflict modin[spreadsheet] vs. modin-spreadsheet
+  # TODO: bring https://pypi.org/project/modin-spreadsheet/ to conda-forge
+  # as modin-spreadsheet-core, leave modin-spreadsheet to be a subpackage here;
+  # see discussion with upstream developers here:
+  # https://github.com/conda-forge/modin-feedstock/pull/14/files#r595534632
   - name: modin-spreadsheet
     build:
-      # TODO: maybe build modin-spreadsheet here from pypi?
-      # dependency modin-spreadsheet is not in conda-forge yet
+      # dependency modin-spreadsheet-core is not in conda-forge yet
       skip: true
     requirements:
       host:
