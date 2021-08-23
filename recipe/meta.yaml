@@ -65,7 +65,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.3.0
+        - pandas ==1.3
         - numpy >=1.16.5
     test:
       imports:
@@ -128,7 +128,7 @@ outputs:
 
   - name: modin-sql
     build:
-      # Dependency dfsql is not in conda-forge yet.
+      # Dependencies dfsql, mindsdb_sql are not in conda-forge yet.
       skip: true
     requirements:
       host:
@@ -137,6 +137,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dfsql >=0.2.6
+        - mindsdb_sql <=0.0.12
     test:
       imports:
         # are there more specific imports?!
