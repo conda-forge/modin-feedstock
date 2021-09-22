@@ -198,6 +198,4 @@ extra:
   recipe-maintainers:
     - devin-petersohn
     - h-vetinari
-    - vnlitvinov
-    - maksimbo1
   feedstock-name: modin
