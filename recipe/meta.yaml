@@ -47,6 +47,7 @@ outputs:
   - name: modin
     requirements:
       host:
+        - python
       run:
         - python
         # modin needs at least one engine; use dask as it is more light-weight than ray
