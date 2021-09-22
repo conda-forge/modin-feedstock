@@ -14,7 +14,7 @@ source:
     - patches/0001-Remove-all-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 2
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
@@ -26,6 +26,7 @@ outputs:
   - name: modin-all
     requirements:
       host:
+        - python
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
@@ -196,4 +197,6 @@ extra:
   recipe-maintainers:
     - devin-petersohn
     - h-vetinari
+    - vnlitvinov
+    - maksimbo1
   feedstock-name: modin
