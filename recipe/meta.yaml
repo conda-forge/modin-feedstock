@@ -119,12 +119,11 @@ outputs:
         - python
       run:
         - python
-        - {{ pin_subpackage('modin-ray', exact=True) }}
         # modin 0.10.2 is not ready for pyarrow=3 + omnisci, so pin to pre-release version
         # ref: https://github.com/modin-project/modin/pull/3308
-        - pyomniscidbe 5.7.0.dev20210429
-        # for some reason pinning pyomniscidbe does not pin omniscidb-common correctly
-        - omniscidb-common 5.7.0.dev20210429
+        - pyarrow =2.0
+        - {{ pin_subpackage('modin-ray', exact=True) }}
+        - pyomniscidbe
     test:
       imports:
         - modin
