@@ -14,7 +14,7 @@ source:
     - patches/0001-Remove-all-dependencies-from-setup.py.patch
 
 build:
-  number: 2
+  number: 3
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
@@ -119,6 +119,9 @@ outputs:
         - python
       run:
         - python
+        # modin 0.10.2 is not ready for pyarrow=3 + omnisci, so pin to pre-release version
+        # ref: https://github.com/modin-project/modin/pull/3308
+        - pyarrow =2.0
         - {{ pin_subpackage('modin-ray', exact=True) }}
         - pyomniscidbe
     test:
