@@ -105,7 +105,7 @@ outputs:
         # aioredis 2.x breaks Ray
         # ref: https://github.com/conda-forge/ray-packages-feedstock/issues/38
         - aioredis <2
-        - pyarrow >=3.0
+        - pyarrow >=1.0
     test:
       imports:
         - modin
