@@ -14,7 +14,7 @@ diff --git a/setup.py b/setup.py
 index 2fcb4d8..9d24d01 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -40,11 +40,11 @@ class ModinDistribution(Distribution):
+@@ -40,1 +40,1 @@ class ModinDistribution(Distribution):
          return False
  
  
@@ -31,7 +31,7 @@ index 2fcb4d8..9d24d01 100644
  all_deps = dask_deps + ray_deps + remote_deps + spreadsheet_deps
  
  # dfsql does not support Windows yet
-@@ -60,7 +60,7 @@ setup(
+@@ -60,5 +60,5 @@ setup(
      url="https://github.com/modin-project/modin",
      long_description=long_description,
      long_description_content_type="text/markdown",
