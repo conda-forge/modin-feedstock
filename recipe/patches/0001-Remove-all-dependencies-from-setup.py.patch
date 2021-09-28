@@ -14,7 +14,7 @@ diff --git a/setup.py b/setup.py
 index 2fcb4d8..9d24d01 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -37,11 +37,11 @@ class ModinDistribution(Distribution):
+@@ -40,11 +40,11 @@ class ModinDistribution(Distribution):
          return False
  
  
