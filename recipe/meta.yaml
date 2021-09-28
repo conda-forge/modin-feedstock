@@ -122,6 +122,7 @@ outputs:
         - python
       run:
         - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
         - pyarrow >=3.0
         - pyomniscidbe
     test:
