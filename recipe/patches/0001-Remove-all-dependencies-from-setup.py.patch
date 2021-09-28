@@ -40,6 +40,6 @@ index 2fcb4d8..9d24d01 100644
      extras_require={
          # can be installed by pip install modin[dask]
          "dask": dask_deps,
--- 
+         
 2.32.0.windows.2
 
