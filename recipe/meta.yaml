@@ -142,8 +142,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - dfsql >=0.2.6
-        - mindsdb_sql <=0.0.12
+        - dfsql >=0.4.2
     test:
       imports:
         # are there more specific imports?!
@@ -161,7 +160,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - boto3 ==1.4.8
+        - boto3
         - cloudpickle
         - rpyc ==4.1.5
     test:
