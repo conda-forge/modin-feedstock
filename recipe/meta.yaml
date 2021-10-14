@@ -71,7 +71,7 @@ outputs:
         - numpy >=1.16.5
       run_constrained:
         # DEBUG for conda/conda#10975
-        - openssl =1.1.1  # [py37]
+        - openssl =1.1.1  # [py==37]
     test:
       imports:
         - modin
