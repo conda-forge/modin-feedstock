@@ -124,7 +124,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - pyarrow >=3.0
-        - pyomniscidbe
+        - pyomniscidbe =5.7.1
     test:
       imports:
         - modin
