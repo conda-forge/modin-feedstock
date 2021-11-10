@@ -14,7 +14,7 @@ source:
     - patches/0001-Remove-all-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<37]
@@ -124,7 +124,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - pyarrow >=3.0
-        - pyomniscidbe =5.7.1
+        - pyomniscidbe =5.7.1=*3_cpu
     test:
       imports:
         - modin
