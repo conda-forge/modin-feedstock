@@ -143,6 +143,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dfsql >=0.4.2
+        - pyparsing <=2.4.7
     test:
       imports:
         # are there more specific imports?!
