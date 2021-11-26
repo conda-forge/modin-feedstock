@@ -131,7 +131,7 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.Backend.put('OmniSci'); df = pd.DataFrame([])"
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('OmniSci'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
