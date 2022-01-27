@@ -1,4 +1,4 @@
-{% set version = "0.12.1" %}
+{% set version = "0.13.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 1d56fe5136ebfdc6d016e9d1d510d4207f323b86f57ac8eb08c844c35b95e8e6
+  sha256: f789c110e0acb98f0686756895ad0f4afe27a6fb4ca7a7146ec90e9c6b48e49b
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
