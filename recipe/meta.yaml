@@ -11,13 +11,14 @@ source:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
     # in upstream so this doesn't go unnoticed.
-    - patches/0001-Remove-all-dependencies-from-setup.py.patch
+    - patches/0001-Remove-some-dependencies-from-omnisci-env.yml-to-be-.patch
+    - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
 
 build:
   number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<37]
+  skip: true  # [py<38]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -67,8 +68,8 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.3.5
-        - numpy >=1.16.5
+        - pandas ==1.4.0
+        - numpy >=1.18.5
         - fsspec
     test:
       imports:
@@ -102,11 +103,11 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - ray-core >=1.4.0
+        - ray-default >=1.4.0
         # aioredis 2.x breaks Ray
         # ref: https://github.com/conda-forge/ray-packages-feedstock/issues/38
         - aioredis <2
-        - pyarrow >=1.0
+        - pyarrow >=4.0.1
     test:
       imports:
         - modin
@@ -124,8 +125,8 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow =5.0
-        - pyomniscidbe =5.8
+        - pyarrow =6
+        - pyomniscidbe ==5.10.1
     test:
       imports:
         - modin
