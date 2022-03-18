@@ -16,7 +16,7 @@ index b6aa6b58..de77ee91 100644
 @@ -3,7 +3,7 @@ channels:
    - conda-forge
  dependencies:
-   - pandas==1.4.0
+   - pandas==1.4.1
 -  - pyarrow=6
 +#  - pyarrow=6  # to be handled by meta.yaml
    - numpy>=1.18.5
