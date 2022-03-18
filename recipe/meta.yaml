@@ -68,7 +68,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.4.0
+        - pandas ==1.4.1
         - numpy >=1.18.5
         - fsspec
     test:
@@ -84,8 +84,8 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - dask >=2.22.0
-        - distributed >=2.22.0
+        - dask >=2.22.0,<2022.2.0
+        - distributed >=2.22.0,<2022.2.0
     test:
       imports:
         - modin
