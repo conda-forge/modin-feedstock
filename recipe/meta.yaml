@@ -111,7 +111,7 @@ outputs:
         - aioredis <2
         - pyarrow >=4.0.1
         # TODO: remove redis dependency pin when GH modin-project/#4398 is resolved
-        - redis>=3.5.0,<4.0.0
+        - redis-py >=3.5.0,<4.0.0
     test:
       imports:
         - modin
