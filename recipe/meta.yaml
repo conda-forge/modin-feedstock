@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -68,7 +68,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.4.1
+        - pandas ==1.4.2
         - numpy >=1.18.5
         - fsspec
     test:
