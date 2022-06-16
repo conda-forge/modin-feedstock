@@ -1,4 +1,4 @@
-{% set version = "0.14.1" %}
+{% set version = "0.15.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: b3d1e1ff6bac5697c0c3862ba59158fb6380457f22866c64d0a9a836c0aef7aa
+  sha256: 946332ecf0a46024ae208575779bfd7e4e7565511d6c4a375f64db5d83c9a359
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -71,6 +71,8 @@ outputs:
         - pandas ==1.4.2
         - numpy >=1.18.5
         - fsspec
+        - psutil
+        - setuptools # TODO: remove when logging metaclass is removed
     test:
       imports:
         - modin
