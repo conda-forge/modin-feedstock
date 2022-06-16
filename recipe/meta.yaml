@@ -71,6 +71,7 @@ outputs:
         - pandas ==1.4.2
         - numpy >=1.18.5
         - fsspec
+        - psutil
     test:
       imports:
         - modin
