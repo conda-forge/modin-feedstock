@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -79,6 +79,8 @@ outputs:
         - modin.pandas
 
   - name: modin-dask
+    build:
+      skip: false  # workaround section to bring back pipelines
     requirements:
       host:
         - python

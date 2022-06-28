@@ -18,6 +18,87 @@ Current build status
 
 
 <table>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_64_python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=linux&configuration=linux_64_python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=linux&configuration=linux_64_python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=osx&configuration=osx_64_python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=osx&configuration=osx_64_python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=osx&configuration=osx_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=win&configuration=win_64_python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=win&configuration=win_64_python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=9616&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/modin-feedstock?branchName=main&jobName=win&configuration=win_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
 </table>
 
 Current release info
@@ -31,9 +112,6 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--dask-green.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-dask.svg)](https://anaconda.org/conda-forge/modin-dask) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--omnisci-green.svg)](https://anaconda.org/conda-forge/modin-omnisci) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-omnisci.svg)](https://anaconda.org/conda-forge/modin-omnisci) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-omnisci.svg)](https://anaconda.org/conda-forge/modin-omnisci) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-omnisci.svg)](https://anaconda.org/conda-forge/modin-omnisci) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--ray-green.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--remote-green.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-remote.svg)](https://anaconda.org/conda-forge/modin-remote) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--spreadsheet-green.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--sql-green.svg)](https://anaconda.org/conda-forge/modin-sql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-sql.svg)](https://anaconda.org/conda-forge/modin-sql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-sql.svg)](https://anaconda.org/conda-forge/modin-sql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-sql.svg)](https://anaconda.org/conda-forge/modin-sql) |
 
 Installing modin
 ================
@@ -45,16 +123,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-omnisci, modin-ray, modin-remote, modin-spreadsheet, modin-sql` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-omnisci, modin-ray` can be installed with `conda`:
 
 ```
-conda install modin modin-all modin-core modin-dask modin-omnisci modin-ray modin-remote modin-spreadsheet modin-sql
+conda install modin modin-all modin-core modin-dask modin-omnisci modin-ray
 ```
 
 or with `mamba`:
 
 ```
-mamba install modin modin-all modin-core modin-dask modin-omnisci modin-ray modin-remote modin-spreadsheet modin-sql
+mamba install modin modin-all modin-core modin-dask modin-omnisci modin-ray
 ```
 
 It is possible to list all of the versions of `modin` available on your platform with `conda`:
