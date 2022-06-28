@@ -1,4 +1,4 @@
-From e8f6b51d4b355e30f6965082b5b2163c778bca0e Mon Sep 17 00:00:00 2001
+From c6320385367d35ece5b700578df5db981b4f126a Mon Sep 17 00:00:00 2001
 From: Vasilij Litvinov <vasilij.n.litvinov@intel.com>
 Date: Thu, 27 Jan 2022 13:56:07 +0300
 Subject: [PATCH 1/2] Remove some dependencies from omnisci-env.yml to be
@@ -10,13 +10,13 @@ Signed-off-by: Vasilij Litvinov <vasilij.n.litvinov@intel.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/requirements/env_omnisci.yml b/requirements/env_omnisci.yml
-index 4478242d..73902de5 100644
+index aa4de7a1..a26961e1 100644
 --- a/requirements/env_omnisci.yml
 +++ b/requirements/env_omnisci.yml
 @@ -3,7 +3,7 @@ channels:
    - conda-forge
  dependencies:
-   - pandas==1.4.2
+   - pandas==1.4.3
 -  - pyarrow=6
 +#  - pyarrow=6  # to be handled by meta.yaml
    - numpy>=1.18.5
