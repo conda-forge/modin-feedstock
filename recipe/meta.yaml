@@ -68,7 +68,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.4.2
+        - pandas ==1.4.3
         - numpy >=1.18.5
         - fsspec
         - psutil
@@ -79,6 +79,8 @@ outputs:
         - modin.pandas
 
   - name: modin-dask
+    build:
+      skip: false  # workaround section to bring back pipelines
     requirements:
       host:
         - python
