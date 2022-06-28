@@ -1,18 +1,18 @@
-From 7685f03ae47df026aab375c33ceec341a9b3dba0 Mon Sep 17 00:00:00 2001
+From 257d00da9bcf2b177b0a088e9b688e3532460474 Mon Sep 17 00:00:00 2001
 From: Vasily Litvinov <fam1ly.n4me@yandex.ru>
 Date: Mon, 9 May 2022 13:43:46 +0300
-Subject: [PATCH] Remove dependencies from setup.py to be handled by conda
+Subject: [PATCH 2/2] Remove dependencies from setup.py to be handled by conda
 
 Signed-off-by: Vasily Litvinov <fam1ly.n4me@yandex.ru>
 ---
- setup.py | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ setup.py | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 444ee832..a0b6ce08 100644
+index 6794164d..a0b6ce08 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -4,12 +4,13 @@ import versioneer
+@@ -4,14 +4,13 @@ import versioneer
  with open("README.md", "r", encoding="utf-8") as fh:
      long_description = fh.read()
  
@@ -20,7 +20,9 @@ index 444ee832..a0b6ce08 100644
 +# all dependencies are to be handled by meta.yaml
 +dask_deps = []
  # TODO: remove redis dependency when resolving GH#4398
--ray_deps = ["ray[default]>=1.4.0", "pyarrow>=4.0.1", "redis>=3.5.0,<4.0.0"]
+-# Pin ray to < 1.13.0 to work around GH#4564
+-# TODO(https://github.com/modin-project/modin/issues/4564): let ray go past 1.13.0.
+-ray_deps = ["ray[default]>=1.4.0,<1.13.0", "pyarrow>=4.0.1", "redis>=3.5.0,<4.0.0"]
 -remote_deps = ["rpyc==4.1.5", "cloudpickle", "boto3"]
 -spreadsheet_deps = ["modin-spreadsheet>=0.1.0"]
 -sql_deps = ["dfsql>=0.4.2", "pyparsing<=2.4.7"]
@@ -31,7 +33,7 @@ index 444ee832..a0b6ce08 100644
  all_deps = dask_deps + ray_deps + remote_deps + spreadsheet_deps
  
  setup(
-@@ -23,7 +24,7 @@ setup(
+@@ -25,7 +24,7 @@ setup(
      url="https://github.com/modin-project/modin",
      long_description=long_description,
      long_description_content_type="text/markdown",
