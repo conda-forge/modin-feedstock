@@ -231,4 +231,5 @@ Feedstock Maintainers
 * [@h-vetinari](https://github.com/h-vetinari/)
 * [@maksimbo1](https://github.com/maksimbo1/)
 * [@vnlitvinov](https://github.com/vnlitvinov/)
+* [@YarShev](https://github.com/YarShev/)
 
