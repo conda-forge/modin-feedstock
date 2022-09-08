@@ -35,7 +35,7 @@ outputs:
         # ray does not have OSX builds yet
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
         # Note: modin-omnisci is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-omnisci', exact=True) }}       # [linux]
+        #- {{ pin_subpackage('modin-omnisci', exact=True) }}     # [linux] turned off trying to avoid hanging of modin-all
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
         #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
