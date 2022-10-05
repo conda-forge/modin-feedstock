@@ -248,9 +248,9 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@YarShev](https://github.com/YarShev/)
 * [@devin-petersohn](https://github.com/devin-petersohn/)
 * [@h-vetinari](https://github.com/h-vetinari/)
 * [@maksimbo1](https://github.com/maksimbo1/)
 * [@vnlitvinov](https://github.com/vnlitvinov/)
-* [@YarShev](https://github.com/YarShev/)
 
