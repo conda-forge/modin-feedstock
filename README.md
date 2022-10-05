@@ -253,4 +253,4 @@ Feedstock Maintainers
 * [@maksimbo1](https://github.com/maksimbo1/)
 * [@vnlitvinov](https://github.com/vnlitvinov/)
 * [@YarShev](https://github.com/YarShev/)
-
+* [@mvashishtha](https://github.com/mvashishtha)
