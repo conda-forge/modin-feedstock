@@ -1,4 +1,4 @@
-{% set version = "0.15.3" %}
+{% set version = "0.16.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 104d504762be0e833ac248f048688f67d0965027afe6e968ce1023b4b42171da
+  sha256: 0e75b71e258edd1456675c596cf1cb1199b06b8690a6152623bb249d99032f19
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
