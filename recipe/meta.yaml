@@ -1,4 +1,4 @@
-{% set version = "0.15.3" %}
+{% set version = "0.16.0" %}
 
 package:
   name: modin-packages
@@ -6,19 +6,19 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 104d504762be0e833ac248f048688f67d0965027afe6e968ce1023b4b42171da
+  sha256: 0e75b71e258edd1456675c596cf1cb1199b06b8690a6152623bb249d99032f19
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
     # in upstream so this doesn't go unnoticed.
-    - patches/0001-Remove-some-dependencies-from-omnisci-env.yml-to-be-.patch
-    - patches/0002-Remove-dependencies-from-setup.py-to-be-handled-by-c.patch
+    - patches/0001-Remove-dependencies-from-env_hdk.patch
+    - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<38]
+  skip: true  # [py<36]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -36,8 +36,8 @@ outputs:
         # there is no ray for python >3.9 for now
         # TODO: when ray support for 3.10 is released, this restriction should be lifted
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and py<=39]
-        # Note: modin-omnisci is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-omnisci', exact=True) }}       # [linux]
+        # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
+        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux and py>=38 and py<=39]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
         #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
@@ -70,11 +70,12 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.4.4
+        - pandas ==1.1.5  # [py<38]
+        - pandas ==1.5.0  # [py>=38]
         - numpy >=1.18.5
         - fsspec
         - psutil
-        - setuptools # TODO: remove when logging metaclass is removed
+        - typing_extensions  # [py<38]
     test:
       imports:
         - modin
@@ -89,8 +90,9 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - dask >=2.22.0,<2022.2.0
-        - distributed >=2.22.0,<2022.2.0
+        - dask >=2.22.0
+        - distributed >=2.22.0
+        - pickle5  # [py<38]
     test:
       imports:
         - modin
@@ -110,13 +112,8 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        # Pin ray to < 1.13.0 to work around GH#4564
-        # TODO(https://github.com/modin-project/modin/issues/4564): let ray go past 1.13.0.
-        - ray-default >=1.4.0,<1.13
-        # Following https://github.com/ray-project/ray/pull/25648, pin protobuf < 4,
-        # because versions >= 4.0.0 are incompatible with ray<1.13.0.
-        - protobuf <4
-        # aioredis 2.x breaks Ray
+        - ray-default >=1.4.0
+        # aioredis 2.x breaks Ray < 1.6
         # ref: https://github.com/conda-forge/ray-packages-feedstock/issues/38
         - aioredis <2
         - pyarrow >=4.0.1
@@ -129,24 +126,25 @@ outputs:
       commands:
         - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); df = pd.DataFrame([])"
 
-  - name: modin-omnisci
+  - name: modin-hdk
     build:
-      # there is no OmniSci on anything but Linux for now
-      skip: true  # [not linux]
+      # there is no Hdk on anything but Linux for now
+      skip: true  # [not linux or py<38 or py>39]
     requirements:
       host:
         - python
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow =6
-        - pyomniscidbe ==5.10.1
+        - pyarrow =5
+        - pyhdk ==0.1
+        - s3fs >=2021.8
     test:
       imports:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('OmniSci'); df = pd.DataFrame([])"
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
