@@ -36,8 +36,8 @@ outputs:
         # there is no ray for python >3.9 for now
         # TODO: when ray support for 3.10 is released, this restriction should be lifted
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and py<=39]
-        # Note: modin-omnisci is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-omnisci', exact=True) }}       # [linux]
+        # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
+        - {{ pin_subpackage('modin-hdk', exact=True) }}       # [linux]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
         #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
@@ -143,7 +143,7 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('OmniSci'); df = pd.DataFrame([])"
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
