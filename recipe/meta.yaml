@@ -71,7 +71,7 @@ outputs:
         - python
         - packaging
         - pandas ==1.1.5  # [py<38]
-        - pandas ==1.5.0  # [py>=38]
+        - pandas ==1.5.1  # [py>=38]
         - numpy >=1.18.5
         - fsspec
         - psutil
