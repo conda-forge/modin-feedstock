@@ -32,7 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        # ray does not have OSX builds yet
+        # ray does not have OSX builds yet, also windows for py310 disabled, see gh-60
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and not (win and py>39)]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux and py>=38 and py<=39]
@@ -100,7 +100,7 @@ outputs:
 
   - name: modin-ray
     build:
-      # There is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2.
+      # There is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2, also windows for py310 disabled, see gh-60
       skip: true  # [osx or (win and py>39)]
     requirements:
       host:
