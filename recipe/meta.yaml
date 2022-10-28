@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<36]
@@ -32,10 +32,8 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        # ray does not have OSX builds yet
-        # there is no ray for python >3.9 for now
-        # TODO: when ray support for 3.10 is released, this restriction should be lifted
-        - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and py<=39]
+        # ray does not have OSX builds yet, also windows for py310 disabled, see gh-60
+        - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and not (win and py>39)]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux and py>=38 and py<=39]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
@@ -102,10 +100,8 @@ outputs:
 
   - name: modin-ray
     build:
-      # There is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2.
-      # There is no Ray for Python >3.9 for now.
-      # TODO: when Ray support for 3.10 is released, this restriction should be lifted.
-      skip: true  # [osx or py>39]
+      # There is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2, also windows for py310 disabled, see gh-60
+      skip: true  # [osx or (win and py>39)]
     requirements:
       host:
         - python
