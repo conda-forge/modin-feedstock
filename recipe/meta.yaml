@@ -108,7 +108,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - ray-default >=1.4.0
+        - ray-default >=1.4.0,<2.1.0
         # aioredis 2.x breaks Ray < 1.6
         # ref: https://github.com/conda-forge/ray-packages-feedstock/issues/38
         - aioredis <2
