@@ -48,7 +48,7 @@ index f3ab2905..b9b3743a 100644
      long_description=long_description,
      long_description_content_type="text/markdown",
 -    install_requires=[f"pandas=={PANDAS_VERSION}", "packaging", "numpy>=1.18.5", "fsspec", "psutil"],
-+    install_requires=[]
++    install_requires=[],
      extras_require={
          # can be installed by pip install modin[dask]
          "dask": dask_deps,
