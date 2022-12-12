@@ -106,6 +106,10 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
+        # https://github.com/modin-project/modin/pull/5270#issuecomment-1331172629
+        # workaround for https://github.com/conda/conda/issues/11744
+        - grpcio!=1.45.*
+        - grpcio!=1.46.*
         - pyarrow
     test:
       imports:
