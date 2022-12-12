@@ -32,7 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        - {{ pin_subpackage('modin-mpi', exact=True) }}
+        - {{ pin_subpackage('modin-unidist', exact=True) }}
         # ray does not have OSX builds yet, also windows for py310 disabled, see gh-60
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and not (win and py>39)]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
@@ -139,7 +139,7 @@ outputs:
       commands:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
-  - name: modin-mpi
+  - name: modin-unidist
     build:
       skip: false  # workaround section to bring back pipelines
     requirements:
@@ -154,7 +154,7 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Unidist'); df = pd.DataFrame([])"
+        - python -c "import modin.pandas as pd, modin.config as modin_cfg, unidist.config as unidist_cfg; modin_cfg.Engine.put('Unidist'); unidist_cfg.Backend.put('mpi'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
