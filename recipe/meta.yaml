@@ -18,7 +18,7 @@ build:
   number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<36]
+  skip: true  # [py<38]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -32,6 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
+        - {{ pin_subpackage('modin-mpi', exact=True) }}
         # ray does not have OSX builds yet, also windows for py310 disabled, see gh-60
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and not (win and py>39)]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
@@ -68,12 +69,10 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.1.5  # [py<38]
-        - pandas ==1.5.2  # [py>=38]
+        - pandas ==1.5.2
         - numpy >=1.18.5
         - fsspec
         - psutil
-        - typing_extensions  # [py<38]
     test:
       imports:
         - modin
@@ -90,7 +89,6 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dask >=2.22.0
         - distributed >=2.22.0
-        - pickle5  # [py<38]
     test:
       imports:
         - modin
@@ -108,13 +106,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - ray-default >=1.4.0,<2.1.0
-        # aioredis 2.x breaks Ray < 1.6
-        # ref: https://github.com/conda-forge/ray-packages-feedstock/issues/38
-        - aioredis <2
-        - pyarrow >=4.0.1
-        # TODO: remove redis dependency pin when GH modin-project/#4398 is resolved
-        - redis-py >=3.5.0,<4.0.0
+        - pyarrow
     test:
       imports:
         - modin
@@ -132,8 +124,8 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow =6
-        - pyhdk ==0.2
+        - pyarrow =8
+        - pyhdk ==0.3
         - s3fs >=2021.8
     test:
       imports:
@@ -141,6 +133,23 @@ outputs:
         - modin.pandas
       commands:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
+
+  - name: modin-mpi
+    build:
+      skip: false  # workaround section to bring back pipelines
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage('modin-core', exact=True) }}
+        - unidist-mpi>=0.2.1
+    test:
+      imports:
+        - modin
+        - modin.pandas
+      commands:
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Unidist'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
