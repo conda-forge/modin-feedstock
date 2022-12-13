@@ -140,8 +140,6 @@ outputs:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
   - name: modin-unidist
-    build:
-      skip: false  # workaround section to bring back pipelines
     requirements:
       host:
         - python
