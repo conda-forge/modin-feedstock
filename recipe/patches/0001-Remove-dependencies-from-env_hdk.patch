@@ -1,15 +1,15 @@
-From 2233daea26a961d587704990e2761b65297476b0 Mon Sep 17 00:00:00 2001
-From: mvashishtha <mahesh@ponder.io>
-Date: Fri, 7 Oct 2022 11:38:41 -0500
+From ba719097439ebcf2d9a9c248995b04e84ceee4a1 Mon Sep 17 00:00:00 2001
+From: Anatoly Myachev <anatoly.myachev@intel.com>
+Date: Mon, 12 Dec 2022 21:24:59 +0100
 Subject: [PATCH 1/2] Remove dependencies from env_hdk.
 
-Signed-off-by: mvashishtha <mahesh@ponder.io>
+Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
 ---
  requirements/env_hdk.yml | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/requirements/env_hdk.yml b/requirements/env_hdk.yml
-index 8e4cdd6e..180ebb73 100644
+index ad91c1b8..883417a6 100644
 --- a/requirements/env_hdk.yml
 +++ b/requirements/env_hdk.yml
 @@ -2,9 +2,9 @@ name: modin_on_hdk
@@ -17,24 +17,25 @@ index 8e4cdd6e..180ebb73 100644
    - conda-forge
  dependencies:
 -  - pandas==1.5.2
--  - pyarrow=6
+-  - pyarrow=8
 -  - numpy>=1.18.5
 +  # - pandas==1.5.2
-+  # - pyarrow=6
++  # - pyarrow=8
 +  # - numpy>=1.18.5
    - fsspec
    - pip
    - pytest>=6.0.1
 @@ -12,8 +12,8 @@ dependencies:
    - pytest-xdist>=2.1.0
-   - coverage<5.0
-   - pygithub==1.53
--  - pyhdk==0.2
+   - coverage
+   - pygithub
+-  - pyhdk==0.3
 -  - s3fs>=2021.8
-+  # - pyhdk==0.2
++  # - pyhdk==0.3
 +  # - s3fs>=2021.8
    - psutil
    - openpyxl
    - xlrd
-2.32.0 (Apple Git-132)
+-- 
+2.37.0.windows.1
 
