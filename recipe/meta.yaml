@@ -148,6 +148,7 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - unidist-mpi>=0.2.1
     test:
+      # TODO: add tests when https://github.com/conda-forge/unidist-packages-feedstock/issues/4 gets fixed
       imports:
         - modin
         - modin.pandas
