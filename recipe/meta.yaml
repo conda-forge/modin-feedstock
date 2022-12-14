@@ -152,7 +152,7 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - mpiexec -n 1 python -c "import modin.pandas as pd, modin.config as modin_cfg, unidist.config as unidist_cfg; modin_cfg.Engine.put('Unidist'); unidist_cfg.Backend.put('mpi'); df = pd.DataFrame([])"
+        - OMPI_MCA_plm_rsh_agent= mpiexec -n 1 python -c "import modin.pandas as pd, modin.config as modin_cfg, unidist.config as unidist_cfg; modin_cfg.Engine.put('Unidist'); unidist_cfg.Backend.put('mpi'); df = pd.DataFrame([])"
 
   - name: modin-sql
     build:
