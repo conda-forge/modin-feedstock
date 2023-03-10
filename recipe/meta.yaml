@@ -129,8 +129,8 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow =8
-        - pyhdk ==0.3.1
+        - pyarrow
+        - pyhdk ==0.4
         - s3fs >=2021.8
     test:
       imports:
