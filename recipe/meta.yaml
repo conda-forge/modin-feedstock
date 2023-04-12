@@ -1,4 +1,4 @@
-{% set version = "0.19.0" %}
+{% set version = "0.20.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: dbd829551d5c8db72ec94f93d4708c748765d35a06ce56deef5d59eb1cb4cee4
+  sha256: 6b01330088fa80604f9d08e03ad884e977113bc74b02da86c0d5e41164787bb7
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -130,7 +130,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - pyarrow
-        - pyhdk ==0.4
+        - pyhdk ==0.5
         - s3fs >=2021.8
     test:
       imports:
