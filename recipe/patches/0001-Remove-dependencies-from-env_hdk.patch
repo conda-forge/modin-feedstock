@@ -29,9 +29,9 @@ index ad91c1b8..883417a6 100644
    - pytest-xdist>=2.1.0
    - coverage
    - pygithub
--  - pyhdk==0.4
+-  - pyhdk==0.5
 -  - s3fs>=2021.8
-+  # - pyhdk==0.4
++  # - pyhdk==0.5
 +  # - s3fs>=2021.8
    - psutil
    - openpyxl
