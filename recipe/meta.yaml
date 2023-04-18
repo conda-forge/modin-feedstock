@@ -69,7 +69,7 @@ outputs:
 
   - name: modin-core
     build:
-      script: python -m pip install . --no-deps --ignore-installed -vv
+      script: ${PYTHON} -m pip install . --no-deps --ignore-installed -vv
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
