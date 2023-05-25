@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -111,7 +111,7 @@ outputs:
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
         - grpcio!=1.46.*
-        - pyarrow
+        - pyarrow<12 # workaround for https://github.com/modin-project/modin/issues/6072
     test:
       imports:
         - modin
@@ -129,7 +129,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow
+        - pyarrow<12 # workaround for https://github.com/modin-project/modin/issues/6072
         - pyhdk ==0.5
         - s3fs >=2021.8
     test:
