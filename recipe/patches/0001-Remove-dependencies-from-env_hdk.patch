@@ -17,10 +17,10 @@ index ad91c1b8..883417a6 100644
    - conda-forge
  dependencies:
 -  - pandas==1.5.3
--  - pyarrow<12 # workaround for https://github.com/modin-project/modin/issues/6072
+-  - pyarrow
 -  - numpy>=1.18.5
 +  # - pandas==1.5.3
-+  # - pyarrow<12 # workaround for https://github.com/modin-project/modin/issues/6072
++  # - pyarrow
 +  # - numpy>=1.18.5
    - fsspec
    - pip
@@ -29,9 +29,9 @@ index ad91c1b8..883417a6 100644
    - pytest-xdist>=2.1.0
    - coverage
    - pygithub
--  - pyhdk==0.5
+-  - pyhdk==0.6
 -  - s3fs>=2021.8
-+  # - pyhdk==0.5
++  # - pyhdk==0.6
 +  # - s3fs>=2021.8
    - psutil
    - openpyxl
