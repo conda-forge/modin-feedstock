@@ -16,10 +16,10 @@ index ad91c1b8..883417a6 100644
  channels:
    - conda-forge
  dependencies:
--  - pandas==1.5.3
+-  - pandas>=2,<2.1
 -  - pyarrow
 -  - numpy>=1.18.5
-+  # - pandas==1.5.3
++  # - pandas>=2,<2.1
 +  # - pyarrow
 +  # - numpy>=1.18.5
    - fsspec
