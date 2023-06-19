@@ -1,4 +1,4 @@
-{% set version = "0.22.2" %}
+{% set version = "0.23.0rc0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: f75e3b924d28eeeb1d77df5fe53cdca527647fe2a4bbbc324e56e3754091fb9b
+  sha256: 71f7b3c18d3ea4b146fd8e544b58940aa16ef92ae9cb6a156a6d0b51c304050d
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -36,7 +36,7 @@ outputs:
         # ray does not have OSX builds yet, also windows for py310 disabled, see gh-60
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx and not (win and py>39)]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux and py>=38]
+        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [(linux or win) and py>=38]
         #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
         #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
@@ -69,7 +69,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.5.3
+        - pandas >=2,<2.1
         - numpy >=1.18.5
         - fsspec
         - psutil
@@ -122,7 +122,7 @@ outputs:
   - name: modin-hdk
     build:
       # there is no Hdk on anything but Linux for now
-      skip: true  # [not linux or py<38]
+      skip: true  # [not (linux or win) or py<38]
     requirements:
       host:
         - python
