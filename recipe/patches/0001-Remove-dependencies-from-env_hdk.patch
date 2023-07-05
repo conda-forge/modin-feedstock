@@ -1,4 +1,4 @@
-From ba719097439ebcf2d9a9c248995b04e84ceee4a1 Mon Sep 17 00:00:00 2001
+From 683a391e05f854f48449089b5c61bed1b6982ef4 Mon Sep 17 00:00:00 2001
 From: Anatoly Myachev <anatoly.myachev@intel.com>
 Date: Mon, 12 Dec 2022 21:24:59 +0100
 Subject: [PATCH 1/2] Remove dependencies from env_hdk.
@@ -9,17 +9,17 @@ Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/requirements/env_hdk.yml b/requirements/env_hdk.yml
-index ad91c1b8..883417a6 100644
+index ba2a00f7..868c19d8 100644
 --- a/requirements/env_hdk.yml
 +++ b/requirements/env_hdk.yml
 @@ -2,9 +2,9 @@ name: modin_on_hdk
  channels:
    - conda-forge
  dependencies:
--  - pandas>=2,<2.1
+-  - pandas==1.5.3
 -  - pyarrow
 -  - numpy>=1.18.5
-+  # - pandas>=2,<2.1
++  # - pandas==1.5.3
 +  # - pyarrow
 +  # - numpy>=1.18.5
    - fsspec
@@ -34,8 +34,8 @@ index ad91c1b8..883417a6 100644
 +  # - pyhdk==0.6
 +  # - s3fs>=2021.8
    - psutil
-   - openpyxl
+   - openpyxl<3.1.0
    - xlrd
 -- 
-2.37.0.windows.1
+2.37.3.windows.1
 
