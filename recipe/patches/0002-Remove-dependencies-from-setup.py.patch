@@ -1,4 +1,4 @@
-From d2f192ee40e614683328e9a948c36ec72d9902fa Mon Sep 17 00:00:00 2001
+From 5827afc15e27c60e89c033783f2ff0cba9be0557 Mon Sep 17 00:00:00 2001
 From: Anatoly Myachev <anatoly.myachev@intel.com>
 Date: Mon, 12 Dec 2022 21:29:01 +0100
 Subject: [PATCH 2/2] Remove dependencies from setup.py.
@@ -9,20 +9,22 @@ Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
  1 file changed, 7 insertions(+), 13 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 2abd0382..f8f39ddd 100644
+index 5626cfb3..49790d0c 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -4,12 +4,12 @@ import versioneer
+@@ -4,14 +4,14 @@ import versioneer
  with open("README.md", "r", encoding="utf-8") as fh:
      long_description = fh.read()
  
 -dask_deps = ["dask>=2.22.0", "distributed>=2.22.0"]
--ray_deps = ["ray[default]>=1.13.0", "pyarrow"]
++dask_deps = []
+ # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
+ # pydantic<2: https://github.com/modin-project/modin/issues/6336
+-ray_deps = ["ray[default]>=1.13.0,!=2.5.0", "pyarrow", "pydantic<2"]
 -unidist_deps = ["unidist[mpi]>=0.2.1"]
 -remote_deps = ["rpyc==4.1.5", "cloudpickle", "boto3"]
 -spreadsheet_deps = ["modin-spreadsheet>=0.1.0"]
 -sql_deps = ["dfsql>=0.4.2", "pyparsing<=2.4.7"]
-+dask_deps = []
 +ray_deps = []
 +unidist_deps = []
 +remote_deps = []
@@ -31,12 +33,12 @@ index 2abd0382..f8f39ddd 100644
  all_deps = dask_deps + ray_deps + unidist_deps + remote_deps + spreadsheet_deps
  
  # Distribute 'modin-autoimport-pandas.pth' along with binary and source distributions.
-@@ -46,13 +46,7 @@ setup(
+@@ -48,13 +48,7 @@ setup(
      url="https://github.com/modin-project/modin",
      long_description=long_description,
      long_description_content_type="text/markdown",
 -    install_requires=[
--        "pandas>=2,<2.1",
+-        "pandas==1.5.3",
 -        "packaging",
 -        "numpy>=1.18.5",
 -        "fsspec",
@@ -47,5 +49,5 @@ index 2abd0382..f8f39ddd 100644
          # can be installed by pip install modin[dask]
          "dask": dask_deps,
 -- 
-2.37.0.windows.1
+2.37.3.windows.1
 
