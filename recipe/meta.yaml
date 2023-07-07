@@ -1,4 +1,4 @@
-{% set version = "0.22.3" %}
+{% set version = "0.23.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 26b0da12a6769dafdb74d8d976f4431f89ec05f4af17185b7b8cc154b33aade0
+  sha256: 194b93cc7b6ca44cfe5c54ff7b70dccbbbd1b1a80e16cd8bf7ba768c8c5ac87a
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -69,7 +69,7 @@ outputs:
       run:
         - python
         - packaging
-        - pandas ==1.5.3
+        - pandas >=2,<2.1
         - numpy >=1.18.5
         - fsspec
         - psutil
@@ -133,7 +133,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - pyarrow
-        - pyhdk ==0.6
+        - pyhdk ==0.7
         - s3fs >=2021.8
     test:
       imports:
