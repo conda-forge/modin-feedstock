@@ -13,7 +13,7 @@ Development: https://github.com/modin-project/modin
 
 Documentation: https://modin.readthedocs.io/
 
-Feedstock Update Documentation: ``HOWTO.md``
+[Feedstock Update Documentation](HOWTO.md)
 
 Current build status
 ====================

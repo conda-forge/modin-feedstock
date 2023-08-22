@@ -7,6 +7,7 @@ You'll need to make these changes to your fork of the modin-feedstock repo. An i
 Inside either your fork of Modin, or the release copy you cloned in order to build the pip package, checkout either:
 * The release branch (if working on releasing a patch version)
 * Modin's master branch (if working on a major or a minor version)
+
 Once you've checked out these files, you need to make 2 commits (can be made in any order).
 ### `env_hdk.yml` commit
 You'll need to remove the `pandas`, `numpy`, `pyhdk` and `s3fs` dependencies from this file. In order to ensure that you have removed all of the necessary dependencies,
@@ -19,6 +20,7 @@ You'll need to replace the following list entries with empty lists in `setup.py`
 * `spreadsheet_deps`
 * `sql_deps`
 * `install_requires`
+
 Once you've set these entries to empty lists, commit the file with the commit message "Remove dependencies from setup.py."
 
 ## Building Patches
