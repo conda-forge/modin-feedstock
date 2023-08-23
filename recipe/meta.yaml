@@ -132,7 +132,6 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyarrow
         - pyhdk ==0.7
         - s3fs >=2021.8
     test:
@@ -168,26 +167,6 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dfsql >=0.4.2
         - pyparsing <=2.4.7
-    test:
-      imports:
-        # are there more specific imports?!
-        - modin
-
-  - name: modin-remote
-    build:
-      # Dependency rpyc is not in conda-forge yet.
-      # Also requires ray-autoscaler which is now absent because
-      # its dependencies on conda-forge are too ancient.
-      skip: true
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        - {{ pin_subpackage('modin-core', exact=True) }}
-        - boto3 >=1.26.0
-        - cloudpickle
-        - rpyc ==4.1.5
     test:
       imports:
         # are there more specific imports?!
