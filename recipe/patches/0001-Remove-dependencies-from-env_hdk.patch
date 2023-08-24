@@ -1,41 +1,35 @@
-From 683a391e05f854f48449089b5c61bed1b6982ef4 Mon Sep 17 00:00:00 2001
-From: Anatoly Myachev <anatoly.myachev@intel.com>
-Date: Mon, 12 Dec 2022 21:24:59 +0100
+From fd73baad1765399acc51dbc9162820d56fa722cb Mon Sep 17 00:00:00 2001
+From: Rehan Durrani <rehan@ponder.io>
+Date: Tue, 22 Aug 2023 14:28:52 -0700
 Subject: [PATCH 1/2] Remove dependencies from env_hdk.
 
-Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
 ---
- requirements/env_hdk.yml | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ requirements/env_hdk.yml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/requirements/env_hdk.yml b/requirements/env_hdk.yml
-index ba2a00f7..868c19d8 100644
+index 28bf4e69..bc7dfab1 100644
 --- a/requirements/env_hdk.yml
 +++ b/requirements/env_hdk.yml
-@@ -2,9 +2,9 @@ name: modin_on_hdk
- channels:
-   - conda-forge
- dependencies:
--  - pandas>=2,<2.1
--  - pyarrow
--  - numpy>=1.18.5
-+  # - pandas>=2,<2.1
-+  # - pyarrow
-+  # - numpy>=1.18.5
-   - fsspec
+@@ -5,15 +5,15 @@ dependencies:
    - pip
-   - pytest>=6.0.1
-@@ -12,8 +12,8 @@ dependencies:
-   - pytest-xdist>=2.1.0
-   - coverage
-   - pygithub
+ 
+   # required dependencies
+-  - pandas>=2,<2.1
+-  - numpy>=1.20.3
 -  - pyhdk==0.7
--  - s3fs>=2021.8
++  # - pandas>=2,<2.1
++  # - numpy>=1.20.3
 +  # - pyhdk==0.7
+   - fsspec>=2021.07.0
+   - packaging>=21.0
+   - psutil>=5.8.0
+ 
+   # optional dependencies
+-  - s3fs>=2021.8
 +  # - s3fs>=2021.8
-   - psutil
-   - openpyxl<3.1.0
-   - xlrd
+   - openpyxl>=3.0.10
+   - xlrd>=2.0.1
+   - sqlalchemy>=1.4.0,<1.4.46
 -- 
-2.37.3.windows.1
-
+2.32.0 (Apple Git-132)
