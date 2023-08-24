@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 2
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -37,7 +37,6 @@ outputs:
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
-        #- {{ pin_subpackage('modin-remote', exact=True) }}       # turned off for now, see below
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
         #- {{ pin_subpackage('modin-sql', exact=True) }}          # turned off for now, see below
     test:
