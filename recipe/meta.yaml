@@ -67,7 +67,7 @@ outputs:
         - pip
         - python
       run:
-        - python >=3.8
+        - python
         - packaging >=21.0
         - pandas >=2,<2.1
         - numpy >=1.20.3
