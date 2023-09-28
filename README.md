@@ -256,6 +256,3 @@ Feedstock Maintainers
 * [@mvashishtha](https://github.com/mvashishtha/)
 * [@vnlitvinov](https://github.com/vnlitvinov/)
 
-
-<!-- dummy commit to enable rerendering -->
-
