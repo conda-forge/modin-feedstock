@@ -250,6 +250,7 @@ Feedstock Maintainers
 =====================
 
 * [@YarShev](https://github.com/YarShev/)
+* [@anmyachev](https://github.com/anmyachev/)
 * [@devin-petersohn](https://github.com/devin-petersohn/)
 * [@h-vetinari](https://github.com/h-vetinari/)
 * [@maksimbo1](https://github.com/maksimbo1/)
