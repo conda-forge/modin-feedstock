@@ -18,7 +18,7 @@ Once you've checked out these files, you need to make 2 commits (can be made in 
 You'll need to comment out some of the dependencies from this file^*^. In order to ensure that you have removed all of the necessary dependencies,
 check the patch introduced by the PR for the previous release version. After making these changes, commit the file with the commit message "Remove dependencies from env_hdk.yml."
 
-^*^ At the time of writing this document, the dependencies that need to be commented out are `pandas`, `numpy`, `pyhdk` and `s3fs`. This may change; however, so be sure
+^*^ At the time of writing this document (10/02/2023), the dependencies that need to be commented out are `pandas`, `numpy`, `pyhdk` and `s3fs`. This may change; however, so be sure
 to check the patch file for the previous release version in order to see what dependencies need to be commented out.
 
 ### `setup.py` commit
