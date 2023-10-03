@@ -7,6 +7,7 @@ You can either push directly to the bot's PR in order to make these changes, or 
 ## Creating Commits for Patches
 
 Inside either your fork of Modin, or the release copy you cloned in order to build the pip package, checkout either:
+
 * The release branch (if working on releasing a patch version)
 * Modin's master branch (if working on a major or a minor version)
 
@@ -14,17 +15,20 @@ Once you've checked out these files, you need to make 2 commits (can be made in 
 
 ### `env_hdk.yml` commit
 
-You'll need to remove the `pandas`, `numpy`, `pyhdk` and `s3fs` dependencies from this file. In order to ensure that you have removed all of the necessary dependencies,
+You'll need to comment out some of the dependencies from this file^*^. In order to ensure that you have removed all of the necessary dependencies,
 check the patch introduced by the PR for the previous release version. After making these changes, commit the file with the commit message "Remove dependencies from env_hdk.yml."
+
+^*^ At the time of writing this document, the dependencies that need to be commented out are `pandas`, `numpy`, `pyhdk` and `s3fs`. This may change; however, so be sure
+to check the patch file for the previous release version in order to see what dependencies need to be commented out.
 
 ### `setup.py` commit
 
 You'll need to replace the following list entries with empty lists in `setup.py`:
+
 * `dask_deps`
 * `ray_deps`
 * `unidist_deps`
 * `spreadsheet_deps`
-* `sql_deps`
 * `install_requires`
 
 Once you've set these entries to empty lists, commit the file with the commit message "Remove dependencies from setup.py."
