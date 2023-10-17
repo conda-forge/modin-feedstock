@@ -13,6 +13,8 @@ Development: https://github.com/modin-project/modin
 
 Documentation: https://modin.readthedocs.io/
 
+[Feedstock Update Documentation](HOWTO.md)
+
 Current build status
 ====================
 
@@ -250,9 +252,9 @@ Feedstock Maintainers
 =====================
 
 * [@YarShev](https://github.com/YarShev/)
+* [@anmyachev](https://github.com/anmyachev/)
 * [@devin-petersohn](https://github.com/devin-petersohn/)
 * [@h-vetinari](https://github.com/h-vetinari/)
 * [@maksimbo1](https://github.com/maksimbo1/)
 * [@mvashishtha](https://github.com/mvashishtha/)
 * [@vnlitvinov](https://github.com/vnlitvinov/)
-
