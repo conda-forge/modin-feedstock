@@ -18,10 +18,10 @@ index 701f475ac..676a9373f 100644
    # required dependencies
 -  - pandas>=2.1,<2.2
 -  - numpy>=1.22.4
--  - pyhdk==0.8
+-  - pyhdk==0.9
 +  # - pandas>=2.1,<2.2
 +  # - numpy>=1.22.4
-+  # - pyhdk==0.8
++  # - pyhdk==0.9
    - fsspec>=2022.05.0
    - packaging>=21.0
    - psutil>=5.8.0

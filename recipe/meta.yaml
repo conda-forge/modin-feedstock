@@ -130,7 +130,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyhdk ==0.8
+        - pyhdk ==0.9
         - s3fs >=2022.05.0
     test:
       imports:
