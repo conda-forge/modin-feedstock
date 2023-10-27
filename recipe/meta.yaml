@@ -15,10 +15,10 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<39 or py>310]
+  skip: true  # [py<39]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
