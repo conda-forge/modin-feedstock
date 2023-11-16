@@ -1,4 +1,4 @@
-{% set version = "0.23.1" %}
+{% set version = "0.23.1.post0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 433e569de333af1c926ba263f15080728648f6f2f4aef493cc097c27af40bdbf
+  sha256: b90292657ab5a2f7b28f45d32e9de0071611fe2b3b185f807106f76ddfa2b89e
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<38]
@@ -148,7 +148,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
-        - unidist-mpi>=0.2.1
+        - unidist-mpi>=0.2.1,<=0.4.1
     test:
       # TODO: add tests when https://github.com/conda-forge/unidist-packages-feedstock/issues/4 gets fixed
       imports:
