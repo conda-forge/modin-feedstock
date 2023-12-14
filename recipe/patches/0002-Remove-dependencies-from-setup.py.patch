@@ -1,7 +1,7 @@
-From 5e483483cb6b6262767f326387c07dd94e61bf64 Mon Sep 17 00:00:00 2001
+From a6d6f3f91321bb8a98ceb2ba69c981d61bbe8ad7 Mon Sep 17 00:00:00 2001
 From: Anatoly Myachev <anatoly.myachev@intel.com>
-Date: Wed, 27 Sep 2023 15:19:28 +0200
-Subject: [PATCH 2/2] Remove dependencies from setup.py.
+Date: Thu, 14 Dec 2023 19:53:51 +0100
+Subject: [PATCH] Remove dependencies from setup.py.
 
 Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
  1 file changed, 5 insertions(+), 11 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index b1b6f39fb..32d5efcfa 100644
+index 8e8036d87..9a6f51e46 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -5,12 +5,12 @@ import versioneer
@@ -21,15 +21,15 @@ index b1b6f39fb..32d5efcfa 100644
  # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
  # pydantic<2: https://github.com/modin-project/modin/issues/6336
 -ray_deps = ["ray[default]>=1.13.0,!=2.5.0", "pyarrow>=7.0.0", "pydantic<2"]
--unidist_deps = ["unidist[mpi]>=0.2.1,<=0.4.1"]
+-mpi_deps = ["unidist[mpi]>=0.2.1"]
 -spreadsheet_deps = ["modin-spreadsheet>=0.1.0"]
 +ray_deps = []
-+unidist_deps = []
++mpi_deps = []
 +spreadsheet_deps = []
- all_deps = dask_deps + ray_deps + unidist_deps + spreadsheet_deps
- 
- # Distribute 'modin-autoimport-pandas.pth' along with binary and source distributions.
-@@ -47,13 +47,7 @@ setup(
+ # Currently, Modin does not include `mpi` option in `all`.
+ # Otherwise, installation of modin[all] would fail because
+ # users need to have a working MPI implementation and
+@@ -51,13 +51,7 @@ setup(
      url="https://github.com/modin-project/modin",
      long_description=long_description,
      long_description_content_type="text/markdown",
@@ -46,3 +46,4 @@ index b1b6f39fb..32d5efcfa 100644
          "dask": dask_deps,
 -- 
 2.39.1.windows.1
+
