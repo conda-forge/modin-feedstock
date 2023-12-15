@@ -1,4 +1,4 @@
-{% set version = "0.25.1" %}
+{% set version = "0.26.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: c4ebf6074260cb3f1ffec775bb27dd1f6d22724a93cb9307179a8951224ec704
+  sha256: 57366bdf2bac356afdc023970b3521f98101e6755f128f793d136009c5e1b5c2
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -137,7 +137,7 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.Engine.put('Native'); cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
+        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
   - name: modin-unidist
     requirements:
