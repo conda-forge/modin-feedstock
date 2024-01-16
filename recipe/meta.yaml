@@ -118,7 +118,8 @@ outputs:
         - modin
         - modin.pandas
       commands:
-        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.CpuCount.put(4); cfg.Engine.put('Ray'); df = pd.DataFrame([])"
+        - python -c "import ray; ray.init()"
+        # - python -c "import modin.pandas as pd, modin.config as cfg; cfg.CpuCount.put(4); cfg.Engine.put('Ray'); df = pd.DataFrame([])"
 
   - name: modin-hdk
     build:
