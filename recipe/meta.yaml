@@ -26,9 +26,6 @@ build:
 outputs:
   - name: modin-all
     requirements:
-      build:
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - python
       run:
@@ -64,6 +61,9 @@ outputs:
     build:
       script: python -m pip install . --no-deps --ignore-installed -vv
     requirements:
+      build:
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - pip
         - python
