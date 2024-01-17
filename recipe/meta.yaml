@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<39]
@@ -120,9 +120,8 @@ outputs:
       imports:
         - modin
         - modin.pandas
-        # TODO: Ray is failing on Windows when initializing, figure out the root cause.
-        # commands:
-        # - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); df = pd.DataFrame([])"
+      commands:
+        - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); df = pd.DataFrame([])"
 
   - name: modin-hdk
     build:
