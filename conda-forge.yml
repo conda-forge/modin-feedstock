@@ -2,6 +2,10 @@ bot:
   automerge: true
 build_platform:
   osx_arm64: osx_64
+azure:
+  settings_win:
+    variables:
+      SET_PAGEFILE: 'True'
 conda_build:
   pkg_format: '2'
 conda_forge_output_validation: true
