@@ -1,15 +1,15 @@
-From a6d6f3f91321bb8a98ceb2ba69c981d61bbe8ad7 Mon Sep 17 00:00:00 2001
-From: Anatoly Myachev <anatoly.myachev@intel.com>
-Date: Thu, 14 Dec 2023 19:53:51 +0100
-Subject: [PATCH] Remove dependencies from setup.py.
+From 89142988f0764761bc071b9cdb54692e535f6108 Mon Sep 17 00:00:00 2001
+From: Mahesh Vashishtha <mahesh.vashishtha@snowflake.com>
+Date: Wed, 10 Apr 2024 15:20:34 -0700
+Subject: [PATCH 2/2] Remove dependencies from setup.py.
 
-Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
+Signed-off-by: Mahesh Vashishtha <mahesh.vashishtha@snowflake.com>
 ---
  setup.py | 16 +++++-----------
  1 file changed, 5 insertions(+), 11 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 8e8036d87..9a6f51e46 100644
+index dfdbd974..7a3f32d3 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -5,11 +5,11 @@ import versioneer
@@ -33,7 +33,7 @@ index 8e8036d87..9a6f51e46 100644
      long_description=long_description,
      long_description_content_type="text/markdown",
 -    install_requires=[
--        "pandas>=2.2,<2.3",
+-        "pandas==2.2.1",
 -        "packaging>=21.0",
 -        "numpy>=1.22.4",
 -        "fsspec>=2022.11.0",
@@ -44,5 +44,5 @@ index 8e8036d87..9a6f51e46 100644
          # can be installed by pip install modin[dask]
          "dask": dask_deps,
 -- 
-2.39.1.windows.1
+2.39.3 (Apple Git-146)
 
