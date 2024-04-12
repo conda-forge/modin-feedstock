@@ -185,6 +185,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - sfc-gh-mvashishtha
     - anmyachev
     - devin-petersohn
     - h-vetinari
