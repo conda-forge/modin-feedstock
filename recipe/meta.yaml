@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<39]
