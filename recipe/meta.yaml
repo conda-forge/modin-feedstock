@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 239b8becd183d5426fb0fbd4d0c3485e6ee7696f4c0bdf2967eb541dfaa575c3
+  sha256: 329cda792ceccc5602a54ea8dfb4f36b4bb5ada8462054b291adcb522009701e
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
