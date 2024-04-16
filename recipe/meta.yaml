@@ -33,8 +33,7 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
         - {{ pin_subpackage('modin-unidist', exact=True) }}
-        # ray does not have OSX builds yet
-        - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
+        - {{ pin_subpackage('modin-ray', exact=True) }}
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
@@ -98,9 +97,6 @@ outputs:
         - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Dask'); df = pd.DataFrame([])"
 
   - name: modin-ray
-    build:
-      # There is no Ray in conda-forge for MacOS yet, see conda-forge/ray-packages-feedstock#2
-      skip: true  # [osx]
     requirements:
       host:
         - python
@@ -108,7 +104,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
-        - ray-default >=1.13.0,!=2.5.0
+        - ray-default >=2.1.0,!=2.5.0
         # https://github.com/modin-project/modin/pull/5270#issuecomment-1331172629
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
