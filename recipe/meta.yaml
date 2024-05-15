@@ -1,4 +1,4 @@
-{% set version = "0.29.0" %}
+{% set version = "0.30.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 329cda792ceccc5602a54ea8dfb4f36b4bb5ada8462054b291adcb522009701e
+  sha256: 479a656eb7eb3b4eaa506ebc885b6cd5202ad76459af5418d29b949b0f314cd4
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -104,12 +104,12 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
-        - ray-default >=2.1.0,!=2.5.0
+        - ray-core >=2.1.0,!=2.5.0
         # https://github.com/modin-project/modin/pull/5270#issuecomment-1331172629
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
         - grpcio!=1.46.*
-        - pyarrow >=7.0.0
+        - pyarrow >=10.0.1
     test:
       imports:
         - modin
