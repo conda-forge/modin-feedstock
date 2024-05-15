@@ -109,7 +109,7 @@ outputs:
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
         - grpcio!=1.46.*
-        - pyarrow >=7.0.0
+        - pyarrow >=10.0.1
     test:
       imports:
         - modin

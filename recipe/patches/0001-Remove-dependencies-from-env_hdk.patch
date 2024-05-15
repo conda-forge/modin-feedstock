@@ -1,15 +1,15 @@
-From c91187d7c822c63cc8003adff7c243e2d471d775 Mon Sep 17 00:00:00 2001
-From: Mahesh Vashishtha <mahesh.vashishtha@snowflake.com>
-Date: Wed, 10 Apr 2024 15:19:39 -0700
+From 27f005645c0bcc456b1dbb9a278a72880fbdec01 Mon Sep 17 00:00:00 2001
+From: Anatoly Myachev <anatoly.myachev@intel.com>
+Date: Wed, 15 May 2024 15:51:56 +0200
 Subject: [PATCH 1/2] Remove dependencies from env_hdk.yml.
 
-Signed-off-by: Mahesh Vashishtha <mahesh.vashishtha@snowflake.com>
+Signed-off-by: Anatoly Myachev <anatoly.myachev@intel.com>
 ---
  requirements/env_hdk.yml | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/requirements/env_hdk.yml b/requirements/env_hdk.yml
-index 83af0ddd..0fb6cc0f 100644
+index f36ddf03e..3a7c917d2 100644
 --- a/requirements/env_hdk.yml
 +++ b/requirements/env_hdk.yml
 @@ -5,15 +5,15 @@ dependencies:
@@ -33,5 +33,5 @@ index 83af0ddd..0fb6cc0f 100644
    - xlrd>=2.0.1
    - sqlalchemy>=2.0.0
 -- 
-2.39.3 (Apple Git-146)
+2.39.1.windows.1
 
