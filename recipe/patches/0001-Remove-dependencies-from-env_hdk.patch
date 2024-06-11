@@ -17,10 +17,10 @@ index 83af0ddd..0fb6cc0f 100644
  
    # required dependencies
 -  - pandas>=2.2,<2.3
--  - numpy>=1.22.4
+-  - numpy>=1.22.4,<2
 -  - pyhdk==0.9
 +#  - pandas>=2.2,<2.3
-+#  - numpy>=1.22.4
++#  - numpy>=1.22.4,<2
 +#  - pyhdk==0.9
    - fsspec>=2022.11.0
    - packaging>=21.0
