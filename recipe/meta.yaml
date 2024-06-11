@@ -32,7 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        - {{ pin_subpackage('modin-unidist', exact=True) }}
+        - {{ pin_subpackage('modin-mpi', exact=True) }}
         # ray does not have OSX builds yet
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
@@ -140,7 +140,7 @@ outputs:
       commands:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
-  - name: modin-unidist
+  - name: modin-mpi
     requirements:
       host:
         - python
