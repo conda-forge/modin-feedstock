@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: xxxxx
+  sha256: e9df1ffb8af3123c10a606b12c69272fc767992a925044ff52d33d7b06b94cdb
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -32,7 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        - {{ pin_subpackage('modin-unidist', exact=True) }}
+        - {{ pin_subpackage('modin-mpi', exact=True) }}
         - {{ pin_subpackage('modin-ray', exact=True) }}
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
@@ -136,7 +136,7 @@ outputs:
       commands:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
-  - name: modin-unidist
+  - name: modin-mpi
     requirements:
       host:
         - python
