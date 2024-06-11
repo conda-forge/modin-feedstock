@@ -18,7 +18,8 @@ build:
   number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<39]
+  # TODO: https://github.com/modin-project/modin/issues/7309 should be fixed first for py312 support
+  skip: true  # [py<39 or py>311]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -33,9 +34,9 @@ outputs:
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
         - {{ pin_subpackage('modin-unidist', exact=True) }}
-        - {{ pin_subpackage('modin-ray', exact=True) }}           # [py<=311]
+        - {{ pin_subpackage('modin-ray', exact=True) }}
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [(linux or win) and py<=311]
+        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
     test:
       imports:
@@ -97,9 +98,6 @@ outputs:
         - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Dask'); df = pd.DataFrame([])"
 
   - name: modin-ray
-    build:
-      # https://github.com/ray-project/ray/issues/40211 should be fixed first
-      skip: true  # [py>311]
     requirements:
       host:
         - python
@@ -123,7 +121,7 @@ outputs:
   - name: modin-hdk
     build:
       # there is no Hdk on anything but Linux for now
-      skip: true  # [not (linux or win) or py>311]
+      skip: true  # [not (linux or win)]
     requirements:
       host:
         - python
