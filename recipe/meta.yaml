@@ -48,8 +48,6 @@ outputs:
     build:
       noarch: generic
     requirements:
-      host:
-        - python >=3.9,<3.12
       run:
         - python >=3.9,<3.12
         # modin needs at least one engine; use dask as it is more light-weight than ray
