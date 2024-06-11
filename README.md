@@ -162,7 +162,7 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--hdk-green.svg)](https://anaconda.org/conda-forge/modin-hdk) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-hdk.svg)](https://anaconda.org/conda-forge/modin-hdk) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-hdk.svg)](https://anaconda.org/conda-forge/modin-hdk) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-hdk.svg)](https://anaconda.org/conda-forge/modin-hdk) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--ray-green.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-ray.svg)](https://anaconda.org/conda-forge/modin-ray) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-modin--spreadsheet-green.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-spreadsheet.svg)](https://anaconda.org/conda-forge/modin-spreadsheet) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--unidist-green.svg)](https://anaconda.org/conda-forge/modin-unidist) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-unidist.svg)](https://anaconda.org/conda-forge/modin-unidist) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-unidist.svg)](https://anaconda.org/conda-forge/modin-unidist) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-unidist.svg)](https://anaconda.org/conda-forge/modin-unidist) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-modin--mpi-green.svg)](https://anaconda.org/conda-forge/modin-mpi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/modin-mpi.svg)](https://anaconda.org/conda-forge/modin-mpi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/modin-mpi.svg)](https://anaconda.org/conda-forge/modin-mpi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/modin-mpi.svg)](https://anaconda.org/conda-forge/modin-mpi) |
 
 Installing modin
 ================
@@ -174,16 +174,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-hdk, modin-ray, modin-spreadsheet, modin-unidist` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-hdk, modin-ray, modin-spreadsheet, modin-mpi` can be installed with `conda`:
 
 ```
-conda install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-spreadsheet modin-unidist
+conda install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-spreadsheet modin-mpi
 ```
 
 or with `mamba`:
 
 ```
-mamba install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-spreadsheet modin-unidist
+mamba install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-spreadsheet modin-mpi
 ```
 
 It is possible to list all of the versions of `modin` available on your platform with `conda`:
