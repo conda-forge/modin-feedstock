@@ -110,6 +110,8 @@ outputs:
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=10.0.1
+        # the problem is in Ray, due to the breaking change in setuptools: https://github.com/pypa/setuptools/issues/4385
+        - setuptools <70.0.0
     test:
       imports:
         - modin
