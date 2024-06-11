@@ -105,7 +105,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
-        - ray-core >=2.20.0,!=2.5.0
+        - ray-core >=2.1.0,!=2.5.0
         # https://github.com/modin-project/modin/pull/5270#issuecomment-1331172629
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
