@@ -1,4 +1,4 @@
-{% set version = "0.30.0" %}
+{% set version = "0.30.1" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 479a656eb7eb3b4eaa506ebc885b6cd5202ad76459af5418d29b949b0f314cd4
+  sha256: 3f4bbad4b05e1aedd30062fd2b6fd4cc02bc8f4066d4d2c790557da82cdb1d2f
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -18,7 +18,8 @@ build:
   number: 0
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
-  skip: true  # [py<39]
+  # TODO: https://github.com/modin-project/modin/issues/7309 should be fixed first for py312 support
+  skip: true  # [py<39 or py>311]
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -70,7 +71,7 @@ outputs:
         - python
         - packaging >=21.0
         - pandas >=2.2,<2.3
-        - numpy >=1.22.4
+        - numpy >=1.22.4,<2
         - fsspec >=2022.11.0
         - psutil >=5.8.0
     test:
@@ -110,6 +111,8 @@ outputs:
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=10.0.1
+        # the problem is in Ray, due to the breaking change in setuptools: https://github.com/pypa/setuptools/issues/4385
+        - setuptools <70.0.0
     test:
       imports:
         - modin
