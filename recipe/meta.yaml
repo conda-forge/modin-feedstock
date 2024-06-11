@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: aefbb94e281fa4d18c4aa04f3d861d8eb2b93ea438cc61adde6685a61abba407
+  sha256: xxx
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<39]
@@ -32,7 +32,7 @@ outputs:
         - python
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
-        - {{ pin_subpackage('modin-unidist', exact=True) }}
+        - {{ pin_subpackage('modin-mpi', exact=True) }}
         # ray does not have OSX builds yet
         - {{ pin_subpackage('modin-ray', exact=True) }}           # [not osx]
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
@@ -140,7 +140,7 @@ outputs:
       commands:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
-  - name: modin-unidist
+  - name: modin-mpi
     requirements:
       host:
         - python
