@@ -147,16 +147,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-hdk, modin-ray, modin-unidist` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `modin, modin-all, modin-core, modin-dask, modin-hdk, modin-ray, modin-mpi` can be installed with `conda`:
 
 ```
-conda install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-unidist
+conda install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-mpi
 ```
 
 or with `mamba`:
 
 ```
-mamba install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-unidist
+mamba install modin modin-all modin-core modin-dask modin-hdk modin-ray modin-mpi
 ```
 
 It is possible to list all of the versions of `modin` available on your platform with `conda`:
