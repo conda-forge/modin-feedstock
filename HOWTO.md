@@ -27,7 +27,7 @@ You'll need to replace the following list entries with empty lists in `setup.py`
 
 * `dask_deps`
 * `ray_deps`
-* `unidist_deps`
+* `mpi_deps`
 * `spreadsheet_deps`
 * `install_requires`
 
