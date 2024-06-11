@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: xxx
+  sha256: 479a656eb7eb3b4eaa506ebc885b6cd5202ad76459af5418d29b949b0f314cd4
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -110,6 +110,8 @@ outputs:
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=10.0.1
+        # the problem is in Ray, due to the breaking change in setuptools: https://github.com/pypa/setuptools/issues/4385
+        - setuptools <70.0.0
     test:
       imports:
         - modin
