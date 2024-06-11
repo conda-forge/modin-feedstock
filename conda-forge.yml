@@ -2,6 +2,10 @@ bot:
   automerge: true
 build_platform:
   osx_arm64: osx_64
+noarch_platforms:
+  - linux_64
+  - win_64
+  - osx_64
 azure:
   settings_win:
     variables:
