@@ -15,28 +15,28 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
-  # noarch disabled because the recipe now has selector for Ray, see below
-  # noarch: python
-  # TODO: https://github.com/modin-project/modin/issues/7309 should be fixed first for py312 support
-  skip: true  # [py<39 or py>311]
+  number: 2
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
 # from "modin[<option>]" to "modin-<option>" as a conda-forge package
 outputs:
   - name: modin-all
+    build:
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        # TODO: https://github.com/modin-project/modin/issues/7309 should be fixed first for py312 support
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
         - {{ pin_subpackage('modin-mpi', exact=True) }}
         - {{ pin_subpackage('modin-ray', exact=True) }}
         # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
         - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
+        - __linux  # [linux]
+        - __win    # [win]
+        - __osx    # [osx]
         #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
     test:
       imports:
@@ -45,11 +45,11 @@ outputs:
 
   # compatibility with packagename before split into options
   - name: modin
+    build:
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         # modin needs at least one engine; use dask as it is more light-weight than ray
         - {{ pin_subpackage('modin-dask', exact=True) }}
     test:
@@ -60,15 +60,13 @@ outputs:
   - name: modin-core
     build:
       script: python -m pip install . --no-deps --ignore-installed -vv
+      noarch: python
     requirements:
-      build:
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - pip
-        - python
+        - python >=3.9,<3.12
       run:
-        - python
+        - python >=3.9,<3.12
         - packaging >=21.0
         - pandas >=2.2,<2.3
         - numpy >=1.22.4,<2
@@ -81,12 +79,10 @@ outputs:
 
   - name: modin-dask
     build:
-      skip: false  # workaround section to bring back pipelines
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dask >=2.22.0
         - distributed >=2.22.0
@@ -98,11 +94,11 @@ outputs:
         - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Dask'); df = pd.DataFrame([])"
 
   - name: modin-ray
+    build:
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
         - ray-core >=2.1.0,!=2.5.0
@@ -122,16 +118,17 @@ outputs:
 
   - name: modin-hdk
     build:
-      # there is no Hdk on anything but Linux for now
-      skip: true  # [not (linux or win)]
+      noarch: generic
+      skip: True   # [not (linux or win)]
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         - pyhdk ==0.9
         - s3fs >=2022.11.0
+        # there is no Hdk on anything but Linux and Windows for now
+        - __linux   # [linux]
+        - __win     # [win]
     test:
       imports:
         - modin
@@ -140,11 +137,11 @@ outputs:
         - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
 
   - name: modin-mpi
+    build:
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         - unidist-mpi>=0.2.1
     test:
@@ -161,11 +158,10 @@ outputs:
     build:
       # dependency modin-spreadsheet-core is not in conda-forge yet
       skip: true
+      noarch: generic
     requirements:
-      host:
-        - python
       run:
-        - python
+        - python >=3.9,<3.12
         - {{ pin_subpackage('modin-core', exact=True) }}
         - modin-spreadsheet >=0.1.0
     test:
