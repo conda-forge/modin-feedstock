@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 1
+  number: 2
   # noarch disabled because the recipe now has selector for Ray, see below
   # noarch: python
   skip: true  # [py<39]
@@ -116,6 +116,8 @@ outputs:
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=7.0.0
+        # the problem is in Ray, due to the breaking change in setuptools: https://github.com/pypa/setuptools/issues/4385
+        - setuptools <70.0.0
     test:
       imports:
         - modin
