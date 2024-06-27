@@ -11,7 +11,6 @@ source:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
     # in upstream so this doesn't go unnoticed.
-    - patches/0001-Remove-dependencies-from-env_hdk.patch
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
@@ -26,18 +25,14 @@ outputs:
       noarch: generic
     requirements:
       run:
-        # TODO: https://github.com/modin-project/modin/issues/7309 should be fixed first for py312 support
-        - python >=3.9,<3.12
+        - python >=3.9
         - {{ pin_subpackage('modin-core', exact=True) }}
         - {{ pin_subpackage('modin-dask', exact=True) }}
         - {{ pin_subpackage('modin-mpi', exact=True) }}
         - {{ pin_subpackage('modin-ray', exact=True) }}
-        # Note: modin-hdk is conda-only, its dependencies were never published on PyPI
-        - {{ pin_subpackage('modin-hdk', exact=True) }}           # [linux or win]
         - __linux  # [linux]
         - __win    # [win]
         - __osx    # [osx]
-        #- {{ pin_subpackage('modin-spreadsheet', exact=True) }}  # turned off for now, see below
     test:
       imports:
         # dummy test; actual tests are in subpackages
@@ -49,7 +44,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - python >=3.9,<3.12
+        - python >=3.9
         # modin needs at least one engine; use dask as it is more light-weight than ray
         - {{ pin_subpackage('modin-dask', exact=True) }}
     test:
@@ -64,9 +59,9 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.9,<3.12
+        - python >=3.9
       run:
-        - python >=3.9,<3.12
+        - python >=3.9
         - packaging >=21.0
         - pandas >=2.2,<2.3
         - numpy >=1.22.4,<2
@@ -82,7 +77,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - python >=3.9,<3.12
+        - python >=3.9
         - {{ pin_subpackage('modin-core', exact=True) }}
         - dask >=2.22.0
         - distributed >=2.22.0
@@ -98,7 +93,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - python >=3.9,<3.12
+        - python >=3.9
         - {{ pin_subpackage('modin-core', exact=True) }}
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
         - ray-core >=2.1.0,!=2.5.0
@@ -116,32 +111,12 @@ outputs:
       commands:
         - python -c "import modin.pandas as pd, modin.config as cfg; cfg.Engine.put('Ray'); df = pd.DataFrame([])"
 
-  - name: modin-hdk
-    build:
-      noarch: generic
-      skip: true  # [not (linux or win)]
-    requirements:
-      run:
-        - python >=3.9,<3.12
-        - {{ pin_subpackage('modin-core', exact=True) }}
-        - pyhdk ==0.9
-        - s3fs >=2022.11.0
-        # there is no Hdk on anything but Linux and Windows for now
-        - __linux   # [linux]
-        - __win     # [win]
-    test:
-      imports:
-        - modin
-        - modin.pandas
-      commands:
-        - python -c "import modin.experimental.pandas as pd, modin.config as cfg; cfg.StorageFormat.put('Hdk'); df = pd.DataFrame([])"
-
   - name: modin-mpi
     build:
       noarch: generic
     requirements:
       run:
-        - python >=3.9,<3.12
+        - python >=3.9
         - {{ pin_subpackage('modin-core', exact=True) }}
         - unidist-mpi>=0.2.1
     test:
@@ -149,25 +124,6 @@ outputs:
       imports:
         - modin
         - modin.pandas
-
-  # TODO: bring https://pypi.org/project/modin-spreadsheet/ to conda-forge
-  # as modin-spreadsheet-core, leave modin-spreadsheet to be a subpackage here;
-  # see discussion with upstream developers here:
-  # https://github.com/conda-forge/modin-feedstock/pull/14/files#r595534632
-  - name: modin-spreadsheet
-    build:
-      # dependency modin-spreadsheet-core is not in conda-forge yet
-      skip: true
-      noarch: generic
-    requirements:
-      run:
-        - python >=3.9,<3.12
-        - {{ pin_subpackage('modin-core', exact=True) }}
-        - modin-spreadsheet >=0.1.0
-    test:
-      imports:
-        # are there more specific imports?!
-        - modin
 
 about:
   home: https://github.com/modin-project/modin
