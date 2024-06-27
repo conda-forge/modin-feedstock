@@ -1,4 +1,4 @@
-{% set version = "0.30.1" %}
+{% set version = "0.31.0" %}
 
 package:
   name: modin-packages
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 3f4bbad4b05e1aedd30062fd2b6fd4cc02bc8f4066d4d2c790557da82cdb1d2f
+  sha256: 4b89d9251ef0880e7f1668584f50532dda602d18bc852f04dfe39625b0550a6c
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -15,7 +15,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 2
+  number: 0
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -119,7 +119,7 @@ outputs:
   - name: modin-hdk
     build:
       noarch: generic
-      skip: True   # [not (linux or win)]
+      skip: true  # [not (linux or win)]
     requirements:
       run:
         - python >=3.9,<3.12
