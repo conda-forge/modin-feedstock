@@ -61,7 +61,6 @@ outputs:
         - pip
         - python >=3.9
         - setuptools
-        - packaging >=21.0
       run:
         - python >=3.9
         - packaging >=21.0
@@ -106,6 +105,7 @@ outputs:
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=10.0.1
+        - setuptools
     test:
       imports:
         - modin
