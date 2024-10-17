@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/modin-project/modin/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 0965445b6e25dae49da6e73cb8006360bbe5765ebafea6eab30f292836b6e5f9
+  sha256: f2ef11f384a7d47eb6680a2f6f4bbc3404fa6290163d36384032daff3837b063
   patches:
     # Remove all requirements from setup.py - they should be handled here.
     # The point is to create a "patch failed" conflict when dependencies change
@@ -14,7 +14,7 @@ source:
     - patches/0002-Remove-dependencies-from-setup.py.patch
 
 build:
-  number: 0
+  number: 1
 
 # the outputs map the modin options on PyPI (see upstream definition
 # https://github.com/modin-project/modin/blob/0.10.1/setup.py#L40-L45)
@@ -60,6 +60,7 @@ outputs:
       host:
         - pip
         - python >=3.9
+        - setuptools
       run:
         - python >=3.9
         - packaging >=21.0
@@ -95,15 +96,16 @@ outputs:
       run:
         - python >=3.9
         - {{ pin_subpackage('modin-core', exact=True) }}
+        # ray 2.9 doesn't work with setuptools>=70;
+        # more details: https://github.com/ray-project/ray/commit/7e9043c38d76412c310fcf6e3fff79cb55d481da
         # ray==2.5.0 broken: https://github.com/conda-forge/ray-packages-feedstock/issues/100
-        - ray-core >=2.1.0,!=2.5.0
+        - ray-core >=2.1.0,!=2.5.0,!=2.9
         # https://github.com/modin-project/modin/pull/5270#issuecomment-1331172629
         # workaround for https://github.com/conda/conda/issues/11744
         - grpcio!=1.45.*
         - grpcio!=1.46.*
         - pyarrow >=10.0.1
-        # the problem is in Ray, due to the breaking change in setuptools: https://github.com/pypa/setuptools/issues/4385
-        - setuptools <70.0.0
+        - setuptools
     test:
       imports:
         - modin
